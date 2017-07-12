@@ -538,6 +538,55 @@
 	}
 
 
+	Graph.prototype.findAllRsNode = function () {
+
+		var resNodeList = [];
+		
+		for(var i=0;i<this.nodes.length;i++){
+
+			if(this.isResNode(this.nodes[i])){
+
+				resNodeList.push(this.nodes[i]);
+
+
+			}
+			
+		}
+
+ 
+		return resNodeList;
+
+	};
+
+	Graph.prototype.isResNode = function (node) {
+
+		var flag = true;
+
+		
+
+		for(var i=0;i<node.outNeighbours.length;i++){
+			if(node.data.label.length > node.outNeighbours[i].data.label.length){
+
+				flag = false;
+				break;
+
+			}
+		}
+
+		for(var i=0;i<node.inNeighbours.length;i++){
+			if(node.data.label.length > node.inNeighbours[i].data.label.length){
+
+				flag = false;
+				break;
+
+			}
+		}
+
+		return flag;
+
+	};
+
+
 
 	Graph.prototype.filterNodes = function (fn) {
 		var tmpNodes = this.nodes.slice();

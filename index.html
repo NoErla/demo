@@ -88,6 +88,7 @@ jQuery(function(){
       graph.split(node);
 
      }
+     
     }
   });
 });
@@ -105,10 +106,26 @@ function removeByValue(arr, val) {
 function button_onclick(){
     var temp = $('#mergePoint').val();//获取值
     graph.merge(temp);
+
+    
+}
+
+function resNode_onclick(){
+
+  var resNodeList = graph.findAllRsNode();
+
+     console.log('Responsible Nodes:');
+      for(var i = 0; i < resNodeList.length; i++){
+
+        console.log(JSON.stringify(resNodeList[i].data));
+
+      }
+    
 }
 </script>
 <input type="text" name="user" value="" id="mergePoint" />
 <input type="button" value="merge" onclick="javascript:button_onclick();"  />
+<input type="button" value="resNode" onclick="javascript:resNode_onclick();"  />
 
 <canvas id="springydemo" width="640" height="480" />
 </body>
