@@ -617,6 +617,15 @@
 		});
 	};
 
+	Graph.prototype.clear = function () {
+		for(var i=this.nodes.length-1;i>=0;i--){
+
+			this.removeNode(this.nodes[i]);
+
+
+		}
+	};
+
 	// -----------
 	var Layout = Springy.Layout = {};
 	Layout.ForceDirected = function (graph, stiffness, repulsion, damping, minEnergyThreshold, maxSpeed) {

@@ -48,13 +48,6 @@ jQuery(function(){
         console.log(JSON.stringify(node.outNeighbours[i].data));
 
       }
-
-      console.log('Node selected brothers: ');
-      for(var i = 0; i < node.brothers.length; i++){
-
-        console.log(JSON.stringify(node.brothers[i].data));
-
-      }
        
     },
     ondoubleclick: function(node){
@@ -122,11 +115,65 @@ function resNode_onclick(){
       }
     
 }
+
+function create_onclick(){
+
+  graph.clear();  
+
+  var createNode = $('#createNode').val();//获取值
+  var createEdge = $('#createEdge').val();//获取值
+
+
+  var nodes =  createNode.split(",");
+
+
+  for(var i=0;i<nodes.length;i++){
+
+    graph.newNode({label : nodes[i]});
+
+  }
+
+  var edges = createEdge.split(",");
+
+  for(var i=0;i<edges.length;i++){
+
+
+    var edge = edges[i].split(" ");
+    graph.nodes[1];
+    
+    graph.nodes[0];
+    
+
+    graph.newEdge(graph.getNodeByLabel(edge[0]),graph.getNodeByLabel(edge[1]),{color: '#6A4A3C'});
+
+  }
+
+
+
+}
 </script>
+<div>
+<textarea id="createNode" rows="2" cols="40" style="display:block;" text="node">
+
+
+
+</textarea>
+<textarea id="createEdge" rows="5" cols="40" text="edge">
+
+
+
+</textarea>
+
+<input type="button" value="create" onclick="javascript:create_onclick();"  />
+
+</div>
 <input type="text" name="user" value="" id="mergePoint" />
 <input type="button" value="merge" onclick="javascript:button_onclick();"  />
 <input type="button" value="resNode" onclick="javascript:resNode_onclick();"  />
 
-<canvas id="springydemo" width="640" height="480" />
+
+<canvas id="springydemo" width="1640" height="480" />
+
+
 </body>
 </html>
